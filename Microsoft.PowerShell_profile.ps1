@@ -32,6 +32,59 @@ function goto {
 
 }
 
+function getValentine {
+    $currentDate = Get-Date
+
+    $valentine = Get-Date -Year $currentDate.Year -Month 2 -Day 14 
+
+    if($valentine -lt $currentDate) {
+        $valentine = Get-Date -Year ($currentDate.Year + 1) -Month 2 -Day 14
+    }
+
+    $timeLeft = ($valentine - $currentDate).Days
+
+    Write-Host "Faltam $timeleft dias para o dia dos namorados"
+  }
+
+function getBirthday {
+    $currentDate = Get-Date
+
+    $birthday = Get-Date -Year $currentDate.Year -Month 2 -Day 16
+
+    if($birthday -lt $currentDate) {
+        $birthday = Get-Date -Year ($currentDate.Year + 1) -Month 2 -Day 16
+    }
+
+    $timeLeft = ($birthday - $currentDate).Days
+
+    Write-Host "Faltam $timeleft dias para o meu aniversario"
+  }
+
+function getMyLoveBirthday {
+    $currentDate = Get-Date
+
+    $loveBirthday = Get-Date -Year $currentDate.Year -Month 06 -Day 02
+    
+    if($loveBirthday -lt $currentDate) {
+        $loveBirthday = Get-Date -Year ($currentDate.Year + 1) -Month 06 -Day 02
+    }
+
+    $timeLeft = ($loveBirthday - $currentDate).Days
+
+    Write-Host "Faltam $timeleft dias para o aniversario da minha PRINCESA LINDA FOFINHA MARAVILHOSA PERFEITA CHEIROSA GOSTOSA"
+  }
+
+function getLoveDate {
+    $currentDate = Get-Date
+
+    $loveDate = Get-Date -Year 2024 -Month 2 -Day 18
+
+    $timeLeft = (($currentDate - $loveDate).Days) + 1 ## Para contar o proprio dia
+
+    Write-Host "Estamos juntos a $timeleft dias"
+  }
+
+
 function weather {
     param (
         $city
@@ -52,6 +105,17 @@ function pask {
     curl cheat.sh/$planguage/$question
 }
 
+
+function save {
+    param(
+      [string]$notes
+    ) 
+
+    echo "Saving: $notes"
+
+    Add-Content -Path "C:\Code\_Files\FastNotes.md" -Value "`nNote: $notes"
+    Add-Content -Path "C:\Code\_Files\FastNotes.md" -Value "`n##################"    
+  }
 
 function f {
     param (
@@ -241,9 +305,10 @@ Set-Alias s start
 Set-Alias py python3
 Set-Alias e explorer
 Set-Alias n node
+Set-Alias cl "c && l"
 
 $ENV:STARSHIP_CONFIG = "$HOME\.config\starship.toml"
-$ENV:STARSHIP_DISTRO = "者 marvel ♤ ♡ ♢ ♧ "
+$ENV:STARSHIP_DISTRO = "者 marvel ♠️ ❤️ ♣️ ♦️ "
 Invoke-Expression (&starship init powershell)
 
 clear
